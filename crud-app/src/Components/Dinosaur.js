@@ -5,6 +5,7 @@ export const Dinosaur = (props) => {
     const {dinosaur, updateDinosaur, deleteDinosaur} = props;
 
     const deleteFeature = (featureID) => {
+        console.log("A feature is being deleted!");
         const updateDinosaur = {
             ...dinosaur,
             features: dinosaur.features.filter((x) => x._id !== featureID)
@@ -19,10 +20,10 @@ export const Dinosaur = (props) => {
     const addNewFeature = (feature) => updateDinosaur({...dinosaur, features: [...dinosaur.features, feature]});
 
     const features = () => (
-        <ul>
+        <ul className="list-group list-group-flush dinoFeatures">
             {dinosaur.features.map((feature, index) => (
-                <li key={index}>
-                    <b>Body Part: </b>{`${feature.part}     `}<b>Color:</b>{`${feature.color}     `}
+                <li key={index} className="list-group-item">
+                    <b>Body Part: </b>{`${feature.part}`}   <b>Color: </b>{`${feature.color}`}
                     <button className="btn btn-danger featureDeleteButton" onClick={(e) => deleteFeature(feature._id)}>Delete Feature</button>
                 </li>
             ))}

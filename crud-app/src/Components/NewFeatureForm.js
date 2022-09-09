@@ -10,6 +10,7 @@ export const NewFeatureForm = (props) => {
             props.addNewFeature({part, color});
             setPart('');
             setColor('');
+            console.log("A new feature is being added!");
         } else {
             console.log("Both part and color must have a value.");
         }
@@ -18,8 +19,8 @@ export const NewFeatureForm = (props) => {
     return (
         <div className="card-body">
             <form onSubmit={onSubmit}>
-                <input type="text" className="form-control" placeholder="Dinosaur's Body Part" onChange={(e) => setPart(e.target.value)} value={part}></input>
-                <input type="text" className="form-control" placeholder="Dinosaur's Body Part Color" onChange={(e) => setColor(e.target.value)} value={color}></input>
+                <input type="text" className="form-control featureInput" placeholder="Dinosaur's Body Part" onChange={(e) => setPart(e.target.value)} value={part}></input>
+                <input type="text" className="form-control featureInput" placeholder="Dinosaur's Body Part Color" onChange={(e) => setColor(e.target.value)} value={color}></input>
                 <button className="btn btn-primary form-control" type="submit">Add Feature</button>
             </form>
         </div>

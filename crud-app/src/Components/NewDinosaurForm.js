@@ -14,6 +14,7 @@ export const NewDinosaurForm = (props) => {
             setSize('');
             setDiet('');
             setEnvironment('');
+            console.log("A new dinosaur is being created!");
         } else {
             console.log("Do not submit a blank value. Please enter a string for the dinosaur's name, size, diet, and environment.");
         }

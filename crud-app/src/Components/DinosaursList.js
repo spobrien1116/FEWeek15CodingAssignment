@@ -9,32 +9,33 @@ export class DinosaursList extends React.Component {
     };
 
     componentDidMount() {
+        console.log("A component did mount!");
         this.fetchDinosaurs();
     };
 
     fetchDinosaurs = async () => {
+        console.log("An asynchronous API call has been made to fetch/READ (get) all dinosaurs!");
         const dinosaurs = await dinosaurAPI.get();
         this.setState({dinosaurs});
     };
 
     updateDinosaur = async (updateDinosaur) => {
+        console.log("An asynchronous API call has been made to UPDATE (put) a dinosaur!");
         await dinosaurAPI.put(updateDinosaur);
         this.fetchDinosaurs();
     };
 
     createDinosaur = async (dinosaur) => {
+        console.log("An asynchronous API call has been made to CREATE (post) a dinosaur!");
         await dinosaurAPI.post({...dinosaur, features: []});
         this.fetchDinosaurs();
     };
 
     deleteDinosaur = async (id) => {
+        console.log("An asynchronous API call has been made to DELETE (delete) a dinosaur!");
         await dinosaurAPI.delete(id);
         this.fetchDinosaurs();
     }
-
-    // addNewDinosaur(dinosaur) {
-    //     this.createDinosaur({...dinosaur, features: []});
-    // }
 
     render() {
         return (
