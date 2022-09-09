@@ -10,7 +10,7 @@ export class DinosaursList extends React.Component {
 
     componentDidMount() {
         this.fetchDinosaurs();
-    }
+    };
 
     fetchDinosaurs = async () => {
         const dinosaurs = await dinosaurAPI.get();
@@ -25,7 +25,12 @@ export class DinosaursList extends React.Component {
     createDinosaur = async (dinosaur) => {
         await dinosaurAPI.post({...dinosaur, features: []});
         this.fetchDinosaurs();
-      }
+    };
+
+    deleteDinosaur = async (id) => {
+        await dinosaurAPI.delete(id);
+        this.fetchDinosaurs();
+    }
 
     // addNewDinosaur(dinosaur) {
     //     this.createDinosaur({...dinosaur, features: []});
@@ -43,6 +48,7 @@ export class DinosaursList extends React.Component {
                             dinosaur={dinosaur}
                             key={dinosaur._id}
                             updateDinosaur={this.updateDinosaur}
+                            deleteDinosaur={this.deleteDinosaur}
                         />
                     ))}
                 </div>

@@ -42,6 +42,18 @@ class DinosaurAPI {
             console.log("There was an issue when calling the addNewDinosaur function.", e);
         }
     }
+
+    delete = async (id) => {
+        try {
+            const resp = await fetch(`${DINOSAUR_ENDPOINT}/${id}`, {
+                method: 'DELETE'
+            });
+            const data = await resp.json();
+            return data;
+        } catch(e) {
+            console.log("There was an issue when calling the deleteDinosaur function.", e);
+        }
+    }
 }
 
 export const dinosaurAPI = new DinosaurAPI();

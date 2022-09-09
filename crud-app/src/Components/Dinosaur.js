@@ -2,7 +2,7 @@ import React from 'react';
 import {NewFeatureForm} from './NewFeatureForm';
 
 export const Dinosaur = (props) => {
-    const {dinosaur, updateDinosaur} = props;
+    const {dinosaur, updateDinosaur, deleteDinosaur} = props;
 
     const deleteFeature = (featureID) => {
         const updateDinosaur = {
@@ -10,6 +10,10 @@ export const Dinosaur = (props) => {
             features: dinosaur.features.filter((x) => x._id !== featureID)
         };
         updateDinosaur(updateDinosaur);
+    };
+
+    const deleteDinosaurByID = (dinosaurID) => {
+        deleteDinosaur(dinosaurID);
     };
 
     const addNewFeature = (feature) => updateDinosaur({...dinosaur, features: [...dinosaur.features, feature]});
@@ -29,7 +33,7 @@ export const Dinosaur = (props) => {
         <div className="card p-4 m-2" key={dinosaur._id}>
             <div className="card-header">
                 <h3>{dinosaur.name}</h3>
-                <button className="btn btn-danger deleteDinosaurButton">Delete Dinosaur(NOT IMPLEMENTED)</button>
+                <button className="btn btn-danger deleteDinosaurButton" onClick={(e) => deleteDinosaurByID(dinosaur._id)}>Delete Dinosaur</button>
             </div>
             <ul className="list-group list-group-flush dinoInfo">
                 <li className="list-group-item"><b>Size: </b>{`${dinosaur.size}`}</li>
