@@ -27,6 +27,21 @@ class DinosaurAPI {
         }
         
     }
+
+    post = async (dinosaur) => {
+        try {
+            const resp = await fetch(`${DINOSAUR_ENDPOINT}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dinosaur)
+            });
+            return await resp.json();
+        } catch(e) {
+            console.log("There was an issue when calling the addNewDinosaur function.", e);
+        }
+    }
 }
 
 export const dinosaurAPI = new DinosaurAPI();

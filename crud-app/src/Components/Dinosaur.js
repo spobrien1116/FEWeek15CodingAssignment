@@ -27,7 +27,7 @@ export const Dinosaur = (props) => {
 
     return (
         <div className="card p-4 m-2" key={dinosaur._id}>
-            <div class="card-header">
+            <div className="card-header">
                 <h3>{dinosaur.name}</h3>
                 <button className="btn btn-danger deleteDinosaurButton">Delete Dinosaur(NOT IMPLEMENTED)</button>
             </div>
