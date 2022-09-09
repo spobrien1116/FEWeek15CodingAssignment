@@ -4,13 +4,13 @@ import {NewFeatureForm} from './NewFeatureForm';
 export const Dinosaur = (props) => {
     const {dinosaur, updateDinosaur, deleteDinosaur} = props;
 
-    const deleteFeature = (featureID) => {
+    const deleteFeature = (index) => {
         console.log("A feature is being deleted!");
-        const updateDinosaur = {
+        const updatedDinosaur = {
             ...dinosaur,
-            features: dinosaur.features.filter((x) => x._id !== featureID)
+            features: dinosaur.features.filter((x) => dinosaur.features.indexOf(x) !== index)
         };
-        updateDinosaur(updateDinosaur);
+        updateDinosaur(updatedDinosaur);
     };
 
     const deleteDinosaurByID = (dinosaurID) => {
@@ -24,7 +24,7 @@ export const Dinosaur = (props) => {
             {dinosaur.features.map((feature, index) => (
                 <li key={index} className="list-group-item">
                     <b>Body Part: </b>{`${feature.part}`}   <b>Color: </b>{`${feature.color}`}
-                    <button className="btn btn-danger featureDeleteButton" onClick={(e) => deleteFeature(feature._id)}>Delete Feature</button>
+                    <button className="btn btn-danger featureDeleteButton" onClick={(e) => deleteFeature(index)}>Delete Feature</button>
                 </li>
             ))}
         </ul>
